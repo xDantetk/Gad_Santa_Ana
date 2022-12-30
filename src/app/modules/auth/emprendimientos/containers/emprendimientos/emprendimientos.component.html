@@ -1,0 +1,68 @@
+<div class="w-100 mx-auto" data-aos="fade-right">
+  <div class="banner">
+    <img src="assets/img/emprendimientos-banner.png" alt="Manos artesanales"
+         class="img-fluid mx-auto d-block">
+  </div>
+</div>
+
+<div class="w-100 mx-auto p-5" data-aos="fade-up">
+  <h3 class="titulo">Emprendimientos</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget metus vel libero iaculis varius. Aliquam cursus
+    nec felis sed vehicula. Nullam hendrerit lobortis ligula, quis efficitur eros. Donec vel lobortis nisi. Nulla
+    facilisis ac metus sit amet fringilla. Morbi porttitor sagittis neque, quis laoreet quam. Proin sit amet ligula
+    ornare, scelerisque ex et, consectetur felis. Nulla sit amet justo vel metus viverra gravida at non urna. Nam
+    commodo finibus tortor, vitae luctus nibh tempor ac. Sed a interdum tellus. Praesent at ornare elit.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget metus vel libero iaculis varius. Aliquam cursus
+    nec felis sed vehicula. Nullam hendrerit lobortis ligula, quis efficitur eros. Donec vel lobortis nisi. Nulla
+    facilisis ac metus sit amet fringilla. Morbi porttitor sagittis neque, quis laoreet quam. Proin sit amet ligula
+    ornare, scelerisque ex et, consectetur felis. Nulla sit amet justo vel metus viverra gravida at non urna. Nam
+    commodo finibus tortor, vitae luctus nibh tempor ac. Sed a interdum tellus. Praesent at ornare elit.
+  </p>
+</div>
+
+<div class="w-100 mx-auto pt-5" style="background: #BDD2B6;" data-aos="fade-up">
+  <h3 class="ml-5">Productos</h3>
+  <p-tabView styleClass="tabview-custom" (onChange)="searchSelected($event)">
+
+    <p-tabPanel *ngFor="let cat of categorias" [header]="cat">
+      <ng-template pTemplate="content">
+        <div class="row row-cols-1 row-cols-md-4">
+          <div class="col mb-4">
+            <div class="card h-100" *ngFor="let emp of emprendimientos">
+              <img [src]="emp.banner" class="card-img-top" alt="...">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{emp.nombre}}</h5>
+                <button class="btn btn-success px-4" [routerLink]="[emp.id]">
+                  Ver
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-tabPanel>
+
+    <!--<p-tabPanel header="Todas las categorías">
+
+      <ng-template pTemplate="content">
+        <div class="row row-cols-1 row-cols-md-4">
+          <div class="col mb-4">
+            <div class="card h-100" *ngFor="let emp of emprendimientos">
+              <img src="assets/img/proyectos-banner.png" class="card-img-top" alt="...">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{emp.nombre}}</h5>
+                <button class="btn btn-success px-4">
+                  Ver
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+    </p-tabPanel>-->
+  </p-tabView>
+</div>
+

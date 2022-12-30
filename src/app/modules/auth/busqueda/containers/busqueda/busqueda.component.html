@@ -1,0 +1,33 @@
+<div class="w-100 mx-auto p-5" style="min-height: calc(100vh - 110px - 250px)">
+  <h3 class="titulo">Resultado de la búsqueda:</h3>
+  <p class="font-weight-bolder">{{msg}}</p>
+
+  <div class="d-flex flex-column" *ngIf="results.length > 0 && !(loading$ | async)">
+    <div class="card mb-3" *ngFor="let r of results">
+      <div class="card-header">
+        {{r.tipo}}
+      </div>
+      <div class="card-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-2">
+              <a [routerLink]="r.url">{{r.nombre}}</a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-10">
+              {{r.descripcion}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="results.length === 0 && !(loading$ | async)">
+    <div style="height: 50vh">
+      <h3 class="text-center">
+        Sin resultados 😔
+      </h3>
+    </div>
+  </ng-container>
+
+</div>

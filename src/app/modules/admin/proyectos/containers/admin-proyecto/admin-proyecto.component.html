@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">
+      {{isEdit ? 'Editar' : 'Nuevo'}} Proyecto
+    </h4>
+  </div>
+  <form [formGroup]="proyectoForm" (ngSubmit)="saveForm()">
+    <div class="card-body">
+      <div class="form-group" disabled style="display: none">
+        <label for="id">Id:</label>
+        <input type="text" class="form-control"
+               id="id"
+               placeholder="Ingresa tu id"
+               formControlName="id">
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control"
+               id="nombre"
+               placeholder="Nombre del proyecto"
+               formControlName="nombre">
+        <small class="text-danger" *ngIf="getNameControl?.touched && getNameControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="descripcion"
+                  placeholder="Que se realizó"
+                  formControlName="descripcion"></textarea>
+        <small class="text-danger"
+               *ngIf="getDescriptionControl?.touched && getDescriptionControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="anio">Año:</label>
+        <select class="custom-select custom-select-sm" id="anio" name="anio" formControlName="anio">
+          <option [ngValue]="0" disabled>-- Seleccione el año --</option>
+          <option [ngValue]="2019">2019</option>
+          <option [ngValue]="2020">2020</option>
+          <option [ngValue]="2021">2021</option>
+          <option [ngValue]="2022">2022</option>
+          <option [ngValue]="2023">2023</option>
+        </select>
+        <small class="text-danger"
+               *ngIf="getAnioControl?.touched && getAnioControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="estado" formControlName="estado">
+          <label class="custom-control-label" for="estado">{{getEstadoControl!.value ? 'Activo' : 'Inactivo'}}</label>
+        </div>
+        <small class="text-danger"
+               *ngIf="getEstadoControl?.touched && getEstadoControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="banner">Banner:</label>
+        <!--Si tiene adjunto -->
+        <ng-container *ngIf="this.proyectoForm.get('banner')?.value != ''">
+          <div class="col-sm-4 text-center">
+            <img [src]="this.proyectoForm.get('banner')?.value" alt="" class="img-fluid">
+            <button class="btn-danger btn-sm" type="button"
+                    (click)="removeAttached(this.proyectoForm.get('banner')?.value)">
+              <i class="fa fa-trash"></i> Eliminar
+            </button>
+          </div>
+        </ng-container>
+        <!-- Si no tiene adjunto-->
+        <ng-container *ngIf="this.proyectoForm.get('banner')?.value == ''">
+          <input type="file" [multiple]="false" accept="image/*" class="form-control-file" id="banner"
+                 (change)="onFileChange($event)">
+          <small class="text-danger" *ngIf="getBannerControl?.touched && getBannerControl?.errors?.['required']">* Este
+            campo es obligatorio</small>
+        </ng-container>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-success btn-sm">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

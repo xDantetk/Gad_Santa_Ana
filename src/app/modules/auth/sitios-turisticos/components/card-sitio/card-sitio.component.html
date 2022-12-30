@@ -1,0 +1,25 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <img class="img-fluid rounded mx-auto d-block" [src]="sitio.banner" alt="Banner">
+      </div>
+      <div class="col-sm-6">
+        <h5 class="card-title titulo">{{sitio.nombre}}</h5>
+        <small class="card-text">{{ sitio.descripcion.length > 255 ? sitio.descripcion.slice(0, 255) + '...' : sitio.descripcion}}</small>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-sm-6">
+        <a href="javascript:void(0)" [routerLink]="[sitio.id]">Ver más</a>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button class="btn btn-success btn-sm btn-circle" (click)="position.emit({lat: sitio.latitud, lng: sitio.longitud})">
+          <i class="fa fa-map-marker"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

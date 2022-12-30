@@ -1,0 +1,101 @@
+<div class="w-100 mx-auto" data-aos="fade-right">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7969.130710145093!2d-78.92436348328965!3d-2.9404310187320113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1bdd0947fde7%3A0xc4d5bc2bdc4fcb3a!2sSanta%20Ana!5e0!3m2!1ses!2sec!4v1670445022906!5m2!1ses!2sec"
+    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<div class="container-fluid" data-aos="fade-up">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 p-5">
+      <h3>Formulario de Contacto</h3>
+      <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget metus vel libero iaculis
+        varius. Aliquam cursus
+        nec felis sed vehicula. Nullam hendrerit lobortis ligula, quis efficitur eros. Donec vel lobortis nisi. Nulla
+        facilisis ac metus sit amet fringilla. Morbi porttitor sagittis neque, </p>
+      <form [formGroup]="contactForm" (ngSubmit)="sendEmail()">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Nombre:</label>
+            <input type="text" class="form-control"
+                   id="name"
+                   placeholder="Ingresa tu nombre aquí"
+                   formControlName="name">
+            <small class="text-danger" *ngIf="getNameControl?.touched && getNameControl?.errors?.['required']">* Este
+              campo es obligatorio</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" class="form-control"
+                   id="email"
+                   placeholder="correo@correo.com"
+                   formControlName="email">
+            <small class="text-danger" *ngIf="getEmailControl?.touched && getEmailControl?.errors?.['required']">* Este
+              campo es obligatorio</small>
+            <small class="text-danger" *ngIf="getEmailControl?.touched && getEmailControl?.errors?.['email']">* No
+              cumple
+              con el formato de correo</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono:</label>
+          <input type="phone" class="form-control"
+                 id="phone"
+                 placeholder="000000000"
+                 formControlName="phone">
+          <small class="text-danger" *ngIf="getPhoneControl?.touched && getPhoneControl?.errors?.['required']">* Este
+            campo es obligatorio</small>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensaje:</label>
+          <textarea class="form-control"
+                    id="message"
+                    rows="5"
+                    placeholder="Ingrese su consulta"
+                    formControlName="message"></textarea>
+          <small class="text-danger" *ngIf="getMessageControl?.touched && getMessageControl?.errors?.['required']">*
+            Este
+            campo es obligatorio</small>
+          <small class="text-danger" *ngIf="getMessageControl?.errors?.['minlength']">* Debe introducir mínimo 5
+            caractéres</small>
+        </div>
+
+
+        <button class="btn btn-submit px-4">
+          Enviar
+        </button>
+      </form>
+    </div>
+
+    <div class="col-sm-12 col-md-6 p-5">
+      <h3>Contactos</h3>
+      <p>Contáctese con nosotros</p>
+      <ul class="list-unstyled">
+        <li class="p-1">
+          <strong>Dirección: </strong>Santa Ana vía a San Bartolo
+        </li>
+        <li class="p-1">
+          <strong>Teléfonos:</strong>
+          <ul class="list-unstyled">
+            <li class="p-1">
+              <strong>Atención Ciudadana</strong>
+              <p>(07)248-0275</p>
+            </li>
+            <li class="p-1">
+              <strong>Secretaría General</strong>
+              <p>(07)2370-1220 </p>
+            </li>
+          </ul>
+        </li>
+        <li class="p-1">
+          <strong>Correo:</strong> santana@cuenca.gob.ec
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Proyectos</h4>
+  </div>
+  <div class="card-body">
+    <div class="py-2">
+      <button class="btn btn-success btn-sm" [routerLink]="['create']">
+        <i class="fa fa-plus"></i> Agregar proyecto
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Año</th>
+          <th scope="col">Estado</th>
+          <th scope="col" class="text-center">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let proyecto of proyectos">
+          <th scope="row">{{proyecto.id}}</th>
+          <td>{{proyecto.nombre}}</td>
+          <td>{{proyecto.descripcion | slice:0:252}}...</td>
+          <td>{{proyecto.anio}}</td>
+          <td class="text-center">
+            <i class="fa"
+               [ngClass]="{'fa-check text-success': proyecto.estado, 'fa-times text-danger': !proyecto.estado}"></i>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-warning btn-sm" [routerLink]="['edit', proyecto.id]">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

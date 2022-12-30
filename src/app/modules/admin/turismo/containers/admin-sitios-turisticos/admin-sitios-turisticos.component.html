@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Sitios Turísticos</h4>
+  </div>
+  <div class="card-body">
+    <div class="py-2">
+      <button class="btn btn-success btn-sm" [routerLink]="['create']">
+        <i class="fa fa-plus"></i> Agregar Sitio
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Ubicación</th>
+          <th scope="col" class="text-center">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let sitio of sitios">
+          <th scope="row">{{sitio.id}}</th>
+          <td>{{sitio.nombre}}</td>
+          <td>{{sitio.descripcion | slice:0: 252}}...</td>
+          <td>{{sitio.latitud}},{{sitio.longitud}}</td>
+          <td class="text-center">
+            <button class="btn btn-warning btn-sm" [routerLink]="['edit', sitio.id]">
+              <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.card {
+  width: 100%;
+  max-width: 530px;
+  margin: auto;
+  background: #CFF1B514;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+@media only screen and (max-width: 530px) {
+  .card {
+    max-width: 330px;
+  }
+}

@@ -1,0 +1,57 @@
+<ng-container *ngIf="selectedSitio">
+
+  <div class="w-100 mx-auto" data-aos="fade-right">
+    <div class="banner">
+      <img [src]="selectedSitio.banner.length > 0 ? selectedSitio.banner : 'assets/img/banner.png'"
+           alt="Banner Sitio Turístico"
+           class="img-fluid mx-auto d-block">
+    </div>
+  </div>
+
+  <div class="w-100 mx-auto p-5" data-aos="fade-up">
+    <h3>{{selectedSitio.nombre}}</h3>
+    <p class="text-justify">{{selectedSitio.descripcion}}</p>
+  </div>
+
+  <div class="w-100 text-center mt-2" data-aos="fade-up">
+    <p-carousel [value]="selectedSitio.carousel" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+                [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+      <ng-template let-product pTemplate="item">
+        <div class="product-item">
+          <div class="product-item-content">
+            <div class="p-mb-3">
+            </div>
+            <div>
+              <img class="img-fluid" alt="Carousel item" [src]="product" data-toggle="modal"
+                   data-target="#sitioModal"
+                   (click)="selectedImg = product">
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+
+</ng-container>
+
+<div class="w-100 px-5 py-2" data-aos="fade-up">
+  <h3>¿Cómo llegar?</h3>
+  <div id="map" style="width: 100%; height: 300px"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="sitioModal" tabindex="-1" aria-labelledby="sitioModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="selectedSitio">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sitioModalLabel">{{selectedSitio.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img [src]="selectedImg" alt="Carousel img" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">
+      {{isEdit ? 'Editar' : 'Nuevo'}} Sitio Turístico
+    </h4>
+  </div>
+  <form [formGroup]="sitioTuristicoForm" (ngSubmit)="saveForm()">
+    <div class="card-body">
+      <div class="form-group" disabled style="display: none">
+        <label for="id">Id:</label>
+        <input type="text" class="form-control"
+               id="id"
+               placeholder="Ingresa tu id"
+               formControlName="id">
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control"
+               id="nombre"
+               placeholder="Nombre del lugar"
+               formControlName="nombre">
+        <small class="text-danger" *ngIf="getNameControl?.touched && getNameControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="descripcion"
+                  placeholder="Reseña histórica del lugar"
+                  formControlName="descripcion"></textarea>
+        <small class="text-danger"
+               *ngIf="getDescriptionControl?.touched && getDescriptionControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label>Ubicación</label>
+        <div id="map" style="width: 100%; height: 300px"></div>
+      </div>
+      <div class="form-group" style="display: none">
+        <label for="latitud">Latitud:</label>
+        <input type="text" class="form-control"
+               id="latitud"
+               placeholder="0.0"
+               formControlName="latitud">
+      </div>
+      <div class="form-group" style="display: none">
+        <label for="longitud">Longitud:</label>
+        <input type="text" class="form-control"
+               id="longitud"
+               placeholder="0.0"
+               formControlName="longitud">
+      </div>
+      <div class="form-group">
+        <label for="banner">Banner:</label>
+        <!--Si tiene adjunto -->
+        <ng-container *ngIf="this.sitioTuristicoForm.get('banner')?.value != ''">
+          <div class="col-sm-4 text-center">
+            <img [src]="this.sitioTuristicoForm.get('banner')?.value" alt="" class="img-fluid">
+            <button class="btn-danger btn-sm" type="button"
+                    (click)="removeAttached(this.sitioTuristicoForm.get('banner')?.value)">
+              <i class="fa fa-trash"></i> Eliminar
+            </button>
+          </div>
+        </ng-container>
+        <!-- Si no tiene adjunto-->
+        <ng-container *ngIf="this.sitioTuristicoForm.get('banner')?.value == ''">
+          <input type="file" [multiple]="false" accept="image/*" class="form-control-file" id="banner"
+                 (change)="onFileChange($event)">
+          <small class="text-danger" *ngIf="getBannerControl?.touched && getBannerControl?.errors?.['required']">* Este
+            campo es obligatorio</small>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="carousel">Carrusel:</label>
+        <input type="file" [multiple]="true" accept="image/*" class="form-control-file" id="carousel"
+               (change)="onFileChangeMulti($event)">
+        <!-- Tiene adjunto carousel -->
+        <ng-container *ngIf="sitioTuristicoForm.get('carousel')?.value.length > 0">
+          <div class="d-flex">
+            <ng-container *ngFor="let item of sitioTuristicoForm.get('carousel')?.value">
+              <div class="d-flex flex-column">
+                <img [src]="item" alt="" class="img-fluid" style="max-height: 150px">
+                <button class="btn-danger btn-sm" type="button"
+                        (click)="removeAttachedCarousel(item)">
+                  <i class="fa fa-trash"></i> Eliminar
+                </button>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-success btn-sm">
+        <i class="fa fa-save"></i> Guardar
+      </button>
+    </div>
+  </form>
+</div>

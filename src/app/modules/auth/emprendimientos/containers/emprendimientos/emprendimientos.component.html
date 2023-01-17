@@ -1,105 +1,109 @@
 <div class="w-100 mx-auto" data-aos="fade-right">
-  <div class="banner">
-    <img src="assets/img/emprendimientos-banner.png" alt="Manos artesanales"
-         class="img-fluid mx-auto d-block">
-  </div>
+	<div class="banner">
+		<img src="assets/img/emprendimientos-banner.png" alt="Manos artesanales"
+		     class="img-fluid mx-auto d-block">
+	</div>
 </div>
 
 <div class="w-100 mx-auto p-5" data-aos="fade-up">
-  <h3 class="titulo">Emprendimientos</h3>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget metus vel libero iaculis varius. Aliquam cursus
-    nec felis sed vehicula. Nullam hendrerit lobortis ligula, quis efficitur eros. Donec vel lobortis nisi. Nulla
-    facilisis ac metus sit amet fringilla. Morbi porttitor sagittis neque, quis laoreet quam. Proin sit amet ligula
-    ornare, scelerisque ex et, consectetur felis. Nulla sit amet justo vel metus viverra gravida at non urna. Nam
-    commodo finibus tortor, vitae luctus nibh tempor ac. Sed a interdum tellus. Praesent at ornare elit.
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget metus vel libero iaculis varius. Aliquam cursus
-    nec felis sed vehicula. Nullam hendrerit lobortis ligula, quis efficitur eros. Donec vel lobortis nisi. Nulla
-    facilisis ac metus sit amet fringilla. Morbi porttitor sagittis neque, quis laoreet quam. Proin sit amet ligula
-    ornare, scelerisque ex et, consectetur felis. Nulla sit amet justo vel metus viverra gravida at non urna. Nam
-    commodo finibus tortor, vitae luctus nibh tempor ac. Sed a interdum tellus. Praesent at ornare elit.
-  </p>
+	<h3 class="titulo">Negocios</h3>
+	<p>
+		Las ramas de ocupación obedecen a la clasificación que se realiza por sectores de producción, primario, secundario y
+		terciario.
+		Bajo estos criterios se puede exponer que el sector primario, comprende todas las actividades que se basan en la
+		extracción de bienes y recursos procedentes del medio natural: agricultura, ganadería, pesca, caza, explotación
+		forestal y minería.
+	</p>
+	<p class="text-justify">
+		El Sector secundario, agrupa las actividades económicas encargadas de la transformación de los bienes y recursos
+		extraídos del medio natural (materias primas) en productos elaborados. Las actividades esenciales del sector son la
+		construcción y la industria y dentro del Sector Terciario, están todas aquellas actividades que no producen bienes
+		materiales de forma directa y, por tanto, no encajan dentro de los sectores primario y secundario; estas actividades
+		son conocidas como “servicios”. Se ubican bajo esta denominación el comercio, hoteles y restaurantes, los
+		transportes y las comunicaciones, las finanzas, un conjunto de actividades auxiliares (asesoría, informática, etc.),
+		los servicios sociales y personales, las actividades relacionadas con el ocio y otras muy diversas.
+	</p>
 </div>
 
 <div class="w-100 mx-auto pt-5" style="background: #BDD2B6;" data-aos="fade-up">
-  <h3 class="ml-5">Productos</h3>
-  <p-tabView styleClass="tabview-custom" (onChange)="searchSelected($event)">
+	<h3 class="ml-5">Productos</h3>
+	<p-tabView styleClass="tabview-custom" (onChange)="searchSelected($event)">
+		
+		<p-tabPanel *ngFor="let cat of categorias" [header]="cat">
+			<ng-template pTemplate="content">
+				<div class="row row-cols-1 row-cols-md-4">
+					<div class="col mb-4" *ngFor="let emp of emprendimientos">
+						<div class="card">
+							<img [src]="emp.banner" class="card-img-top" alt="..." style="max-height: 300px">
+							<div class="card-body text-center">
+								<h5 class="card-title">{{emp.nombre}}</h5>
+								<button class="btn btn-success px-4" (click)="selectedEmp = emp" data-toggle="modal"
+								        data-target="#emprendimientoModal">
+									Ver
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</p-tabPanel>
+		
+		<!--<p-tabPanel header="Todas las categorías">
 
-    <p-tabPanel *ngFor="let cat of categorias" [header]="cat">
-      <ng-template pTemplate="content">
-        <div class="row row-cols-1 row-cols-md-4">
-          <div class="col mb-4" *ngFor="let emp of emprendimientos">
-            <div class="card">
-              <img [src]="emp.banner" class="card-img-top" alt="..." style="max-height: 300px">
-              <div class="card-body text-center">
-                <h5 class="card-title">{{emp.nombre}}</h5>
-                <button class="btn btn-success px-4" (click)="selectedEmp = emp" data-toggle="modal"
-                        data-target="#emprendimientoModal">
-                  Ver
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </p-tabPanel>
+			<ng-template pTemplate="content">
+				<div class="row row-cols-1 row-cols-md-4">
+					<div class="col mb-4">
+						<div class="card h-100" *ngFor="let emp of emprendimientos">
+							<img src="assets/img/proyectos-banner.png" class="card-img-top" alt="...">
+							<div class="card-body text-center">
+								<h5 class="card-title">{{emp.nombre}}</h5>
+								<button class="btn btn-success px-4">
+									Ver
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
 
-    <!--<p-tabPanel header="Todas las categorías">
-
-      <ng-template pTemplate="content">
-        <div class="row row-cols-1 row-cols-md-4">
-          <div class="col mb-4">
-            <div class="card h-100" *ngFor="let emp of emprendimientos">
-              <img src="assets/img/proyectos-banner.png" class="card-img-top" alt="...">
-              <div class="card-body text-center">
-                <h5 class="card-title">{{emp.nombre}}</h5>
-                <button class="btn btn-success px-4">
-                  Ver
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-
-    </p-tabPanel>-->
-  </p-tabView>
+		</p-tabPanel>-->
+	</p-tabView>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="emprendimientoModal" tabindex="-1" aria-labelledby="emprendimientoModalLabel"
      aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" *ngIf="selectedEmp">
-      <div class="modal-header">
-        <h5 class="modal-title" id="emprendimientoModalLabel">Emprendimiento {{selectedEmp.nombre}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>{{selectedEmp.descripcion}}</p>
-        <div class="w-100 mx-auto">
-          <p-carousel [value]="[selectedEmp.banner, selectedEmp.banner, selectedEmp.banner]" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
-                      [circular]="true"
-                      [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-            <ng-template let-emp pTemplate="item">
-              <div class="product-item">
-                <div class="product-item-content">
-                  <div class="p-mb-3">
-                  </div>
-                  <div>
-                    <img [src]="emp" alt="Banner" class="img-fluid" style="max-height: 300px" >
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </p-carousel>
-        </div>
-        <p class="text-center"><strong>Dirección:</strong> {{selectedEmp.direccion}}</p>
-        <p class="text-center"><strong>Teléfono:</strong> {{selectedEmp.telefono}}</p>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content" *ngIf="selectedEmp">
+			<div class="modal-header">
+				<h5 class="modal-title" id="emprendimientoModalLabel">Emprendimiento {{selectedEmp.nombre}}</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>{{selectedEmp.descripcion}}</p>
+				<div class="w-100 mx-auto">
+					<p-carousel [value]="[selectedEmp.banner, selectedEmp.banner, selectedEmp.banner]"
+					            styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+					            [circular]="true"
+					            [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+						<ng-template let-emp pTemplate="item">
+							<div class="product-item">
+								<div class="product-item-content">
+									<div class="p-mb-3">
+									</div>
+									<div>
+										<img [src]="emp" alt="Banner" class="img-fluid" style="max-height: 300px">
+									</div>
+								</div>
+							</div>
+						</ng-template>
+					</p-carousel>
+				</div>
+				<p class="text-center"><strong>Dirección:</strong> {{selectedEmp.direccion}}</p>
+				<p class="text-center"><strong>Teléfono:</strong> {{selectedEmp.telefono}}</p>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,37 +1,46 @@
 <div class="w-100 mx-auto" data-aos="fade-right">
-  <div class="banner">
-    <img src="assets/img/banner.png" alt="Iglesia de Santa Ana" class="img-fluid mx-auto d-block">
-  </div>
+	<div class="banner">
+		<img src="assets/img/banner.png" alt="Iglesia de Santa Ana" class="img-fluid mx-auto d-block">
+	</div>
 </div>
 
 <div class="w-100 p-5" data-aos="fade-up">
-  <h3 class="titulo">Sitios Turísticos</h3>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget metus vel libero iaculis varius. Aliquam cursus
-    nec felis sed vehicula. Nullam hendrerit lobortis ligula, quis efficitur eros. Donec vel lobortis nisi. Nulla
-    facilisis ac metus sit amet fringilla. Morbi porttitor sagittis neque, quis laoreet quam. Proin sit amet ligula
-    ornare, scelerisque ex et, consectetur felis. Nulla sit amet justo vel metus viverra gravida at non urna. Nam
-    commodo finibus tortor, vitae luctus nibh tempor ac. Sed a interdum tellus. Praesent at ornare elit.
-  </p>
+	<h3 class="titulo">Sitios Turísticos</h3>
+	<p class="text-justify">
+		Para clasificar los atractivos turísticos se ha tomado la metodología que emplea el ministerio de turismo del
+		Ecuador en base a tres parámetros:
+	</p>
+	<ul class="list-unstyled">
+		<li><strong>Categoría:</strong> Que hace referencia a las características propias de la zona, estas pueden traducirse en
+			manifestaciones culturales y sitios naturales.
+		<li><strong>Tipo:</strong> Se refiere a las características de una categoría, donde se desatacan los usos ancestrales y actuales
+			además de la importancia que tiene.
+		</li>
+		<li><strong>Subtipo:</strong> Tiene un grado más de detalle con respecto a las características de un tipo. <br>Dentro del patrimonio natural se ubica el tipo montaña, dentro del cual en el subtipo colina, están las lomas de
+			Quipam, Pizhing, Alta Cruz, Del Obispo, y miradores ubicados en las comunidades de Dizha La Dolorosa,
+			Ingapirca-Barzalitos y Nariviña.
+		</li>
+	</ul>
 </div>
 
 <div class="container-fluid" data-aos="fade-up">
-  <h3 class="titulo px-5">Explora Santa Ana</h3>
-  <div class="row">
-
-    <div class="col-xs-12 col-md-6 p-5">
-      <div class="sitios-container" style="max-height: 500px; overflow-y: auto">
-        <app-card-sitio *ngFor="let sitio of sitios" [sitio]="sitio" (position)="handleMapClick($event)"></app-card-sitio>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-md-6 p-5">
-      <div id="map" style="width: 100%; height: 350px"></div>
-      <!--<iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7969.130710145093!2d-78.92436348328965!3d-2.9404310187320113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1bdd0947fde7%3A0xc4d5bc2bdc4fcb3a!2sSanta%20Ana!5e0!3m2!1ses!2sec!4v1670445022906!5m2!1ses!2sec"
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>-->
-    </div>
-
-  </div>
+	<h3 class="titulo px-5">Explora Santa Ana</h3>
+	<div class="row">
+		
+		<div class="col-xs-12 col-md-6 p-5">
+			<div class="sitios-container" style="max-height: 500px; overflow-y: auto">
+				<app-card-sitio *ngFor="let sitio of sitios" [sitio]="sitio"
+				                (position)="handleMapClick($event)"></app-card-sitio>
+			</div>
+		</div>
+		
+		<div class="col-xs-12 col-md-6 p-5">
+			<div id="map" style="width: 100%; height: 350px"></div>
+			<!--<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7969.130710145093!2d-78.92436348328965!3d-2.9404310187320113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1bdd0947fde7%3A0xc4d5bc2bdc4fcb3a!2sSanta%20Ana!5e0!3m2!1ses!2sec!4v1670445022906!5m2!1ses!2sec"
+				width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+		</div>
+	
+	</div>
 </div>

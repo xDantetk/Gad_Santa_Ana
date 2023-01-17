@@ -13,7 +13,6 @@ export class EmprendimientoComponent implements OnInit, OnDestroy {
 
   sub!: Subscription;
   selectedEmp!: Emprendimiento;
-  selectedImg = '';
   responsiveOptions: any;
 
   constructor(private route: ActivatedRoute,

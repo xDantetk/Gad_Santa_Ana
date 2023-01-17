@@ -31,13 +31,14 @@
         <small class="text-danger" *ngIf="getEmailControl?.touched && getEmailControl?.errors?.['required']">* Este
           campo es obligatorio</small>
       </div>
-      <div class="form-group">
+      <div class="form-group" *ngIf="!isEdit">
         <label for="password">Contraseña:</label>
         <input type="password" class="form-control"
                id="password"
                placeholder="Ingrese contraseña"
                formControlName="password">
-        <small class="text-danger" *ngIf="getPasswordControl?.touched && getPasswordControl?.errors?.['required']">* Este
+        <small class="text-danger" *ngIf="getPasswordControl?.touched && getPasswordControl?.errors?.['required']">*
+          Este
           campo es obligatorio</small>
       </div>
       <div class="form-group">
@@ -49,6 +50,16 @@
         </select>
         <small class="text-danger"
                *ngIf="getRolControl?.touched && getRolControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="estado" name="estado" formControlName="estado">
+          <label class="custom-control-label" for="estado">{{ getEstadoControl?.value ? 'Activo' : 'Inactivo'}}</label>
+        </div>
+        <small class="text-danger"
+               *ngIf="getEstadoControl?.touched && getEstadoControl?.errors?.['required']">* Este
           campo es obligatorio</small>
       </div>
     </div>

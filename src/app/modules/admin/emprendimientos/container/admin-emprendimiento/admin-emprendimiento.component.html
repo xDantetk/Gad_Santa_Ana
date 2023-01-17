@@ -48,6 +48,27 @@
           campo es obligatorio</small>
       </div>
       <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input class="form-control"
+               id="direccion"
+               placeholder="Dirección del negocio"
+               formControlName="direccion">
+        <small class="text-danger"
+               *ngIf="getDireccionControl?.touched && getDireccionControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input class="form-control"
+               id="telefono"
+               type="tel"
+               placeholder="0000000000"
+               formControlName="telefono">
+        <small class="text-danger"
+               *ngIf="getPhoneControl?.touched && getPhoneControl?.errors?.['required']">* Este
+          campo es obligatorio</small>
+      </div>
+      <div class="form-group">
         <label for="estado">Estado:</label>
         <div class="custom-control custom-switch">
           <input type="checkbox" class="custom-control-input" id="estado" formControlName="estado">

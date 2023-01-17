@@ -48,7 +48,9 @@ export class AdminEmprendimientoComponent implements OnInit {
         descripcion: emp.descripcion,
         categoria: emp.categoria,
         estado: emp.estado,
-        banner: emp.banner
+        banner: emp.banner,
+        direccion: emp.direccion,
+        telefono: emp.telefono
       });
       this.store.dispatch(setLoadingSpinner({status: false}));
     });
@@ -74,6 +76,14 @@ export class AdminEmprendimientoComponent implements OnInit {
     return this.empForm.get('banner');
   }
 
+  get getDireccionControl() {
+    return this.empForm.get('direccion');
+  }
+
+  get getPhoneControl() {
+    return this.empForm.get('telefono');
+  }
+
   initSubForm() {
     this.empForm = this.fb.group({
       id: [Date.now(), Validators.required],
@@ -81,7 +91,9 @@ export class AdminEmprendimientoComponent implements OnInit {
       descripcion: ['', Validators.required],
       categoria: ['', Validators.required],
       estado: [false, Validators.required],
-      banner: ['', Validators.required]
+      banner: ['', Validators.required],
+      direccion: ['', Validators.required],
+      telefono: ['', Validators.required]
     });
   }
 

@@ -15,6 +15,7 @@
 
   <div class="w-100 text-center mt-2" data-aos="fade-up">
     <p-carousel [value]="selectedSitio.carousel" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+                [circular]="true"
                 [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
       <ng-template let-product pTemplate="item">
         <div class="product-item">
@@ -22,7 +23,7 @@
             <div class="p-mb-3">
             </div>
             <div>
-              <img class="img-fluid" alt="Carousel item" [src]="product" data-toggle="modal"
+              <img class="img-fluid" style="max-height: 300px" alt="Carousel item" [src]="product" data-toggle="modal"
                    data-target="#sitioModal"
                    (click)="selectedImg = product">
             </div>
@@ -41,7 +42,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="sitioModal" tabindex="-1" aria-labelledby="sitioModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content" *ngIf="selectedSitio">
       <div class="modal-header">
         <h5 class="modal-title" id="sitioModalLabel">{{selectedSitio.nombre}}</h5>

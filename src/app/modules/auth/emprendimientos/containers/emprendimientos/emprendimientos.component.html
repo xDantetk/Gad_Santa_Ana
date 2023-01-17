@@ -29,12 +29,13 @@
     <p-tabPanel *ngFor="let cat of categorias" [header]="cat">
       <ng-template pTemplate="content">
         <div class="row row-cols-1 row-cols-md-4">
-          <div class="col mb-4">
-            <div class="card h-100" *ngFor="let emp of emprendimientos">
-              <img [src]="emp.banner" class="card-img-top" alt="...">
+          <div class="col mb-4" *ngFor="let emp of emprendimientos">
+            <div class="card">
+              <img [src]="emp.banner" class="card-img-top" alt="..." style="max-height: 300px">
               <div class="card-body text-center">
                 <h5 class="card-title">{{emp.nombre}}</h5>
-                <button class="btn btn-success px-4" [routerLink]="[emp.id]">
+                <button class="btn btn-success px-4" (click)="selectedEmp = emp" data-toggle="modal"
+                        data-target="#emprendimientoModal">
                   Ver
                 </button>
               </div>
@@ -66,3 +67,39 @@
   </p-tabView>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="emprendimientoModal" tabindex="-1" aria-labelledby="emprendimientoModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" *ngIf="selectedEmp">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emprendimientoModalLabel">Emprendimiento {{selectedEmp.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{selectedEmp.descripcion}}</p>
+        <div class="w-100 mx-auto">
+          <p-carousel [value]="[selectedEmp.banner, selectedEmp.banner, selectedEmp.banner]" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+                      [circular]="true"
+                      [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+            <ng-template let-emp pTemplate="item">
+              <div class="product-item">
+                <div class="product-item-content">
+                  <div class="p-mb-3">
+                  </div>
+                  <div>
+                    <img [src]="emp" alt="Banner" class="img-fluid" style="max-height: 300px" >
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-carousel>
+        </div>
+        <p class="text-center"><strong>Dirección:</strong> {{selectedEmp.direccion}}</p>
+        <p class="text-center"><strong>Teléfono:</strong> {{selectedEmp.telefono}}</p>
+      </div>
+    </div>
+  </div>
+</div>

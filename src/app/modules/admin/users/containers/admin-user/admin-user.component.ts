@@ -47,7 +47,8 @@ export class AdminUserComponent implements OnInit {
         name: user.name,
         email: user.email,
         password: user.password,
-        rol: user.rol
+        rol: user.rol,
+        estado: user.estado
       });
       this.store.dispatch(setLoadingSpinner({status: false}));
     });
@@ -59,7 +60,8 @@ export class AdminUserComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      rol: ['', Validators.required]
+      rol: ['', Validators.required],
+      estado: [true, Validators.required]
     });
   }
 
@@ -77,6 +79,10 @@ export class AdminUserComponent implements OnInit {
 
   get getRolControl() {
     return this.userForm.get('rol');
+  }
+
+  get getEstadoControl() {
+    return this.userForm.get('estado');
   }
 
   saveForm() {
@@ -111,7 +117,8 @@ export class AdminUserComponent implements OnInit {
                 name: this.userForm.value['name'],
                 password: this.userForm.value['password'],
                 email: this.userForm.value['email'],
-                rol: this.userForm.value['rol']
+                rol: this.userForm.value['rol'],
+                estado: this.userForm.value['estado']
               };
 
               this._usersService.saveUser(user).then(() => {

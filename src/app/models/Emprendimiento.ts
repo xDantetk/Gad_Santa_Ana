@@ -5,4 +5,6 @@ export interface Emprendimiento {
   descripcion: string;
   categoria: string;
   estado: boolean;
+  direccion: string;
+  telefono: string;
 }

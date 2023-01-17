@@ -5,6 +5,8 @@ import { EmprendimientosRoutingModule } from './emprendimientos-routing.module';
 import { EmprendimientosComponent } from './containers/emprendimientos/emprendimientos.component';
 import {TabViewModule} from "primeng/tabview";
 import { EmprendimientoComponent } from './containers/emprendimiento/emprendimiento.component';
+import {CarouselModule} from "primeng/carousel";
+import {ButtonModule} from "primeng/button";
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { EmprendimientoComponent } from './containers/emprendimiento/emprendimie
   imports: [
     CommonModule,
     EmprendimientosRoutingModule,
-    TabViewModule
+    TabViewModule,
+    CarouselModule,
+    ButtonModule
   ]
 })
 export class EmprendimientosModule { }

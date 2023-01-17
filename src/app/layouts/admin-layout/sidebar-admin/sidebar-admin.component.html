@@ -2,37 +2,37 @@
   <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column">
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="rol === 'Admin'">
         <a class="nav-link" routerLinkActive="active" routerLink="dashboard">
           <i class="fa fa-tachometer"></i> Dashboard
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="rol === 'Admin'">
         <a class="nav-link" routerLinkActive="active" routerLink="proyectos">
           <i class="fa fa-folder"></i> Proyectos
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="rol === 'Admin'">
         <a class="nav-link" routerLinkActive="active" routerLink="emprendimientos">
           <i class="fa fa-folder"></i> Emprendimientos
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="rol === 'Admin'">
         <a class="nav-link" routerLinkActive="active" routerLink="turismo">
           <i class="fa fa-folder"></i> Turismo
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="rol === 'Admin'">
         <a class="nav-link" routerLinkActive="active" routerLink="users">
           <i class="fa fa-folder"></i> Usuarios
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="rol === 'Bandeja' || rol === 'Admin'">
         <a class="nav-link" routerLinkActive="active" routerLink="bandeja">
           <i class="fa fa-folder"></i> Bandeja Contactos
         </a>
